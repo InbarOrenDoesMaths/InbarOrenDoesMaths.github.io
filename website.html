@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbar Oren</title>
+    <style>
+
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f4f4f9, #e6eaf2);
+            color: #333;
+        }
+
+        header {
+            background: #000099;
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+        }
+
+        /* Outer Container */
+
+        .outer-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Inner Container */
+
+        .inner-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(to bottom, #000099 50%, #0056b3 100%);
+            color: white;
+            padding: 6.5px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar nav ul li {
+            display: inline-block;
+        }
+
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 8px; /* borders of the items in navbar */
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .navbar nav ul li a:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar nav ul li a.active {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        /* Sections */
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        section {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .seminar-mail {
+            font-size: 13.44px;
+            white-space: nowrap;
+            overflow: visible;
+            font-style: italic;
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .photo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #000099;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-left: 0;
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        ul li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            background: #0056b3;
+            color: white;
+            padding: 0.1rem 0;
+            margin-top: 0.2rem;
+        }
+
+        /* Mobile View */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 0.2rem 0;
+            }
+
+            header h1 {
+                font-size: 1rem;
+            }
+
+            header p {
+                margin: 0;
+                font-size: 0.7rem;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Adjust Outer Container */
+            .outer-container {
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 0;
+                border-radius: 1px;
+            }
+
+            .photo {
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+            }
+
+            .photo img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                border: 4px solid #0056b3;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            /* Adjust Inner Container */
+            .inner-container {
+                width: 100%;
+                margin: 0 auto;
+                padding: 0.3rem 0;
+                border-radius: 1px;
+            }
+
+            /* Adjust Navigation Bar */
+            .navbar {
+                width: 100%;
+
+            }
+
+            .navbar nav ul {
+                width: 85%;
+                margin: 0;
+                /*padding: 0 0;*/
+                display: flex;
+            }
+
+            .navbar nav ul li {
+                /*width: 100%;*/
+            }
+
+            .navbar nav ul li a {
+                /*width: 100%;*/
+                padding: 0.5rem 0;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+            type="text/javascript">
+    </script>
+</head>
+<body>
+<header>
+    <h1>Inbar Oren</h1>
+    <p>Welcome to my personal website</p>
+</header>
+<div class="outer-container">
+    <!-- Photo Section -->
+    <div class="photo">
+        <img src="faceSupercompact.jpg" alt="Profile">
+    </div>
+
+    <div class="inner-container">
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="#about" onclick="showSection('about')">About Me</a></li>
+                    <li><a href="#papers" onclick="showSection('papers')">Publications and Preprints</a></li>
+                    <!--li><a href="#" onclick= "showSection('notes')">Reasearch Notes</a></li-->
+                    <li><a href="#meetings" onclick="showSection('meetings')">Meetings</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- About Me Section -->
+            <section id="about" class="active">
+                <h1>About Me</h1>
+                <p>
+                <div style="text-align: left; line-height:2;">
+                    I am a PhD student in the Institue of mathematics in the Hebrew University,
+                    <br>studying set theory, under the supervision of Prof. <a
+                        href="https://math.huji.ac.il/~yairhayut/" style="color: #000099" target="_blank">Yair Hayut</a>.
+                    I am mainy interested in combinatorial results that occur by changing cofinalities of
+                    successors of singular cardinals.
+                    <br>I received my MSc from Ben-Gurion University under the supervison of Prof. Menachem Kojman.
+                    <br>You can reach me at <a href="mailto:inbar.oren2@mail.huji.ac.il" style="color: #006300">inbar.oren2@mail.huji.ac.il.</a>
+                    <br>
+
+                    <img src="cape_raul.jpeg" alt="Tasmania, Australia" width="480" height="240"
+                         style="display: block; margin: auto;">
+                </div>
+
+            </section>
+
+            <!-- Publications Section -->
+            <section id="papers">
+                <h1>Publications and Preprints: </h1>
+                <ul style="list-style-type: disc; margin-left: 10px;">
+                    <li>
+                        <strong>A model for global compactness</strong> with <em>
+                        <a href="https://scholar.google.com/citations?user=HRZ9TQcAAAAJ&hl=en" target="_blank"
+                           style="color: #000099"> Sittinon Jiratikansakul </a>
+                        and
+                        <a href="https://www.assafrinot.com" target="_blank" style="color: #000099"> Assaf
+                            Rinot </a>.<br>
+                    </em>
+                        Submitted December 2024
+                        <a href="https://www.assafrinot.com/paper/67" target="_blank" style="color: #006300">View
+                            here</a>.
+                        <!-- a href=" arxiv ink " target="_blank"> <img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"></a -->
+                    </li>
+                    <!-- Add more publications as needed -->
+                </ul>
+            </section>
+
+            <!-- Notes Section -->
+
+            <!--section id="notes">
+                <h1>Research Notes: </h1>
+                <ul>
+                    <li>
+                        <strong>[Notes title 1]:</strong>
+                        <a href="[link1]" target="_blank">View Here</a>
+                    </li>
+                </ul>
+            </section-->
+
+            <!-- Talks Section -->
+            <section id="meetings">
+                <h1 style="color: #000099"> Invited Talks: </h1>
+                <ul>
+                    <li>
+                        July 2024, Leeds UK: <strong>120 Years of choice</strong>
+                        <a href="Leeds2024P1.pdf" download style="color: #000099"> Presentaion on a Model for global
+                            compactness</a>
+                    </li>
+                    <!-- Add more presantaions as needed -->
+                </ul>
+
+                <h1 style="color: #006300">Organising: </h1>
+                <ul>
+                    <li style="text-align: left; line-height:2;">
+                        <strong>October 2024 - Present: Huji set theory research seminar.</strong>
+                        <br>If you would like to be added to the mailing list, please sent me an email to:
+                        <a href="mailto:inbar.oren2@mail.huji.ac.il+setTheorySeminarHuji?subject= HUJI Set Theory Seminar Mailing List&body=Hi, please add me to the seminar mailing list"
+                           class="seminar-mail" style="color: #006300">inbar.oren2@mail.huji.ac.il</a>.
+                    </li>
+                    <!-- Add more seminars as needed -->
+                </ul>
+
+                <!--h2>Attended Meetings: </h2>
+                <ul>
+                    <li>
+                        July 2024, Leeds UK: <strong>120 Years of choice</strong>
+                        <a href="Leeds2024P1.pdf" download> Presentaion on a Model for global compactness</a>
+                    </li>
+
+                </ul>
+                <-->
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showSection(sectionId) {
+        // Get all sections within the content area
+        const sections = document.querySelectorAll('.content section');
+
+        // Hide all sections
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Show the selected section
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.classList.add('active');
+        }
+
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('.navbar nav ul li a');
+
+        // Remove active class from all navigation links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add active class to the clicked navigation link
+        const activeLink = document.querySelector(`.navbar nav ul li a[href="#${sectionId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+</script>
+<footer>
+    <p>&copy; 2024 Inbar Oren</p>
+</footer>
+</body>
+</html>
