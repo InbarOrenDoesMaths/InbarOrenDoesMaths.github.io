@@ -355,6 +355,15 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                max-height: 0;
+                opacity: 0;
+                transition: max-height 0.2s, opacity 0.2s;
+            }
+
+            /* Section name in the bar only once the card heading has scrolled under the bar */
+            .js.show-section-name .current-section {
+                max-height: 20px;
+                opacity: 1;
             }
 
             .js .menu-button {
@@ -477,6 +486,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+            .js .current-section,
             .menu-lines,
             .menu-lines::before,
             .menu-lines::after {
@@ -650,10 +660,38 @@
         });
     }
 
+    // Phone bar: show the section name only after the section's first heading has scrolled under the bar (64px)
+    const pageRoot = document.documentElement;
+    let headingObserver = null;
+    if ('IntersectionObserver' in window) {
+        headingObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                pageRoot.classList.toggle('show-section-name',
+                    !entry.isIntersecting && entry.boundingClientRect.top < 64);
+            });
+        }, { rootMargin: '-64px 0px 0px 0px' });
+    } else {
+        pageRoot.classList.add('show-section-name');
+    }
+
+    function watchHeading() {
+        if (!headingObserver) {
+            return;
+        }
+        headingObserver.disconnect();
+        pageRoot.classList.remove('show-section-name');
+        const heading = document.querySelector('.content section.active h2');
+        if (heading) {
+            headingObserver.observe(heading);
+        }
+    }
+
     // Set the section from the URL hash, and keep it in sync
     showSection(location.hash.slice(1));
+    watchHeading();
     window.addEventListener('hashchange', () => {
         showSection(location.hash.slice(1));
+        watchHeading();
     });
 
     // Phone menu: open and close the drop-down
