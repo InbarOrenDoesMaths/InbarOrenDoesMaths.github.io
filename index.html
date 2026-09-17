@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inbar Oren, PhD student in set theory at the Hebrew University of Jerusalem: research interests, publications, preprints and talks.">
     <title>Inbar Oren</title>
     <style>
 
@@ -33,20 +34,8 @@
             font-size: 1.2rem;
         }
 
-        /* Outer Container */
-
-        .outer-container {
-            width: 90%;
-            max-width: 900px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Inner Container */
-
+        /* Outer and inner containers */
+        .outer-container,
         .inner-container {
             width: 90%;
             max-width: 900px;
@@ -63,6 +52,7 @@
             color: white;
             padding: 6.5px;
             width: 100%;
+            box-sizing: border-box;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -103,9 +93,7 @@
 
         /* Sections */
         .content {
-            flex: 1;
             padding: 20px;
-            overflow-y: auto;
         }
 
         section {
@@ -127,7 +115,7 @@
 
         h2 {
             color: #0056b3;
-            border-bottom: 2px solid #0056b3;
+            border-bottom: 2px solid currentColor;
             display: inline-block;
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
@@ -145,6 +133,7 @@
         .photo img {
             width: 150px;
             height: 150px;
+            object-fit: cover;
             border-radius: 50%;
             border: 4px solid #000099;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -155,10 +144,6 @@
             padding-left: 20px;
             margin-left: 0;
             text-align: left;
-        }
-
-        li {
-            margin-bottom: 10px;
         }
 
         ul li {
@@ -199,10 +184,7 @@
             }
 
             body {
-                font-family: Arial, sans-serif;
                 font-size: 14px;
-                margin: 0;
-                padding: 0;
             }
 
             /* Adjust Outer Container */
@@ -237,29 +219,28 @@
             /* Adjust Navigation Bar */
             .navbar {
                 width: 100%;
+                white-space: normal;
 
             }
 
             .navbar nav ul {
-                width: 85%;
                 margin: 0;
-                /*padding: 0 0;*/
+                padding: 0;
                 display: flex;
-            }
-
-            .navbar nav ul li {
-                /*width: 100%;*/
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0 8px;
             }
 
             .navbar nav ul li a {
-                /*width: 100%;*/
-                padding: 0.5rem 0;
+                padding: 0.5rem 0.5rem;
+            }
+
+            .seminar-mail {
+                white-space: normal;
             }
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
-            type="text/javascript">
-    </script>
 </head>
 <body>
 <header>
@@ -269,7 +250,7 @@
 <div class="outer-container">
     <!-- Photo Section -->
     <div class="photo">
-        <img src="faceSupercompact.jpg" alt="Profile">
+        <img src="faceSupercompact.jpg" alt="Photo of Inbar Oren">
     </div>
 
     <div class="inner-container">
@@ -277,10 +258,10 @@
         <div class="navbar">
             <nav>
                 <ul>
-                    <li><a href="#about" onclick="showSection('about')">About Me</a></li>
-                    <li><a href="#papers" onclick="showSection('papers')">Publications and Preprints</a></li>
-                    <!--li><a href="#" onclick= "showSection('notes')">Reasearch Notes</a></li-->
-                    <li><a href="#meetings" onclick="showSection('meetings')">Meetings</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#papers">Publications and Preprints</a></li>
+                    <!--li><a href="#notes">Reasearch Notes</a></li-->
+                    <li><a href="#meetings">Meetings</a></li>
                 </ul>
             </nav>
         </div>
@@ -288,33 +269,32 @@
         <!-- Main Content -->
         <div class="content">
             <!-- About Me Section -->
-            <section id="about" class="active">
-                <h1>About Me</h1>
-                <p>
+            <section data-section="about" class="active">
+                <h2>About Me</h2>
                 <div style="text-align: left; line-height:2;">
-                    I am a PhD student in the Institue of mathematics in the Hebrew University,
+                    I am a PhD student in the Institute of mathematics in the Hebrew University,
                     <br>studying set theory, under the supervision of Prof. <a
                         href="https://math.huji.ac.il/~yairhayut/" style="color: #000099" target="_blank">Yair Hayut</a>.
                     I am mainly interested in large cardinal forcings and in particular combinatorial results that occur by changing cofinalities of
                     successors of singular cardinals.
-                    <br>I received my MSc from Ben-Gurion University under the supervison of Prof. Menachem Kojman.
+                    <br>I received my MSc from Ben-Gurion University under the supervision of Prof. Menachem Kojman.
                     <br>You can reach me at <a href="mailto:inbar.oren2@mail.huji.ac.il" style="color: #006300">inbar.oren2 'at' mail.huji.ac.il.</a>
                     <br>
 
                     <img src="cape_raul.jpeg" alt="Tasmania, Australia" width="480" height="240"
-                         style="display: block; margin: auto;">
+                         style="display: block; margin: auto; max-width: 100%; height: auto;">
                 </div>
 
             </section>
 
             <!-- Publications Section -->
-            <section id="papers">
-                <h1>Publications and Preprints: </h1>
+            <section data-section="papers">
+                <h2>Publications and Preprints: </h2>
                 <ul style="list-style-type: disc; margin-left: 10px;">
                     <li>
                         <strong>A model for global compactness</strong> with <em>
                         <a href="https://scholar.google.com/citations?user=HRZ9TQcAAAAJ&hl=en" target="_blank"
-                           style="color: #000099"> Sittinon Jiratikansakul </a>
+                           style="color: #000099"> Sittinon Jirattikansakul </a>
                         and
                         <a href="https://www.assafrinot.com" target="_blank" style="color: #000099"> Assaf
                             Rinot </a>.<br>
@@ -322,12 +302,12 @@
                         Accepted December 2025
                         <a href="https://www.assafrinot.com/paper/67" target="_blank" style="color: #006300">View
                             here</a>.
-                        <a href="https://arxiv.org/abs/2412.13584v1" target="_blank"> arxiv link <!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--> </a>
+                        <a href="https://arxiv.org/abs/2412.13584" target="_blank"> arxiv link <!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--> </a>
                     </li>
 					<li>
-                        <strong>Stationary reflection using ancestrally forced conditions</strong>
-                        Preprint Julay 2026
-                        <a href="http://arxiv.org/abs/2607.28350" target="_blank"> arxiv link <!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--> </a>
+                        <strong>Stationary reflection using ancestrally forced conditions</strong>.<br>
+                        Preprint July 2026.
+                        <a href="https://arxiv.org/abs/2607.28350" target="_blank"> arxiv link <!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--> </a>
                     </li>
                     <!-- Add more publications as needed -->
                 </ul>
@@ -335,8 +315,8 @@
 
             <!-- Notes Section -->
 
-            <!--section id="notes">
-                <h1>Research Notes: </h1>
+            <!--section data-section="notes">
+                <h2>Research Notes: </h2>
                 <ul>
                     <li>
                         <strong>[Notes title 1]:</strong>
@@ -346,8 +326,8 @@
             </section-->
 
             <!-- Talks Section -->
-            <section id="meetings">
-                <h1 style="color: #000099"> Invited Talks: </h1>
+            <section data-section="meetings">
+                <h2 style="color: #000099"> Invited Talks: </h2>
                 <ul>
                     <li>
                         July 2024, Leeds UK: <strong>120 Years of choice</strong>
@@ -361,12 +341,12 @@
                     <!-- Add more presantaions as needed -->
                 </ul>
 
-                <h1 style="color: #006300">Organising: </h1>
+                <h2 style="color: #006300">Organising: </h2>
                 <ul>
                     <li style="text-align: left; line-height:2;">
                         <strong>October 2024 - Present: HUJI set theory research seminar.</strong>
-                        <br>If you would like to be added to the mailing list, please sent me an email to:
-                        <a href="mailto:inbar.oren2@mail.huji.ac.il+setTheorySeminarHuji?subject= HUJI Set Theory Seminar Mailing List&body=Hi, please add me to the seminar mailing list"
+                        <br>If you would like to be added to the mailing list, please send me an email to:
+                        <a href="mailto:inbar.oren2+setTheorySeminarHuji@mail.huji.ac.il?subject=HUJI%20Set%20Theory%20Seminar%20Mailing%20List&amp;body=Hi%2C%20please%20add%20me%20to%20the%20seminar%20mailing%20list"
                            class="seminar-mail" style="color: #006300">inbar.oren2 'at' mail.huji.ac.il</a>.
                     </li>
                     <!-- Add more seminars as needed -->
@@ -388,38 +368,42 @@
 
 
 <script>
-    function showSection(sectionId) {
-        // Get all sections within the content area
-        const sections = document.querySelectorAll('.content section');
-
-        // Hide all sections
+    function showSection(name) {
+        // Show the section whose data-section matches the hash, hide the rest
+        const sections = document.querySelectorAll('.content section[data-section]');
+        let matched = false;
         sections.forEach(section => {
-            section.classList.remove('active');
+            const isMatch = section.dataset.section === name;
+            section.classList.toggle('active', isMatch);
+            if (isMatch) {
+                matched = true;
+            }
         });
 
-        // Show the selected section
-        const activeSection = document.getElementById(sectionId);
-        if (activeSection) {
-            activeSection.classList.add('active');
+        // Unknown or empty hash: fall back to About Me
+        if (!matched) {
+            if (name !== 'about') {
+                showSection('about');
+            }
+            return;
         }
 
-        // Get all navigation links
+        // Highlight only the nav link for the visible section
         const navLinks = document.querySelectorAll('.navbar nav ul li a');
-
-        // Remove active class from all navigation links
         navLinks.forEach(link => {
-            link.classList.remove('active');
+            link.classList.toggle('active', link.getAttribute('href') === `#${name}`);
         });
-
-        // Add active class to the clicked navigation link
-        const activeLink = document.querySelector(`.navbar nav ul li a[href="#${sectionId}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
     }
+
+    // Set the section from the URL hash, and keep it in sync
+    showSection(location.hash.slice(1));
+    window.addEventListener('hashchange', () => {
+        showSection(location.hash.slice(1));
+    });
 </script>
+
 <footer>
-    <p>&copy; 2024 Inbar Oren</p>
+    <p>&copy; 2026 Inbar Oren</p>
 </footer>
 </body>
 </html>
