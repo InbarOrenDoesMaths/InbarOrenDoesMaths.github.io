@@ -5,101 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Inbar Oren, PhD student in set theory at the Hebrew University of Jerusalem: research interests, publications, preprints and talks.">
     <title>Inbar Oren</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script>document.documentElement.classList.add('js');</script>
     <style>
 
         /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #f4f4f9, #e6eaf2);
-            color: #333;
+            background: #f5f7fb;
+            color: #3a4254;
         }
 
         header {
-            background: #000099;
+            background: linear-gradient(to right, #00005c, #000099);
             color: white;
-            padding: 0.5rem 0;
-            text-align: center;
-            position: relative;
+        }
+
+        .header-inner {
+            width: 90%;
+            max-width: 900px;
+            height: 150px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            width: 116px;
+            height: 116px;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
         header h1 {
-            font-size: 1.5rem;
-            margin: 0;
+            margin: 0 0 24px;
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-        }
-
-        /* Outer and inner containers */
-        .outer-container,
-        .inner-container {
-            width: 90%;
-            max-width: 900px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            background: linear-gradient(to bottom, #000099 50%, #0056b3 100%);
-            color: white;
-            padding: 6.5px;
-            width: 100%;
-            box-sizing: border-box;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .navbar nav ul {
+        header nav ul {
             list-style: none;
-            padding: 0 20px;
             margin: 0;
+            padding: 0;
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 40px;
         }
 
-        .navbar nav ul li {
-            display: inline-block;
+        header nav ul li {
+            margin: 0;
         }
 
-        .navbar nav ul li a {
+        header nav a {
+            display: block;
+            position: relative;
+            padding: 0 0 25px;
+            line-height: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        header nav a:hover,
+        header nav a.active {
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            padding: 8px 8px; /* borders of the items in navbar */
-            border-radius: 8px;
-            display: inline-block;
         }
 
-        .navbar nav ul li a:hover {
-            background-color: #0056b3;
+        header nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            border-radius: 2px 2px 0 0;
+            background: white;
         }
 
-        .navbar nav ul li a.active {
-            background-color: #0056b3;
-            color: white;
+        header nav a:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 4px;
+        }
+
+        .current-section,
+        .menu-button,
+        .menu-backdrop {
+            display: none;
         }
 
         /* Sections */
         .content {
-            padding: 20px;
+            display: block;
+            width: 90%;
+            max-width: 900px;
+            margin: 36px auto 0;
+            font-size: 17px;
+            line-height: 1.5;
         }
 
         section {
             display: none;
-            padding: 20px;
-            text-align: center;
+            background: white;
+            border: 1px solid #e3e7ef;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(11, 29, 81, 0.06);
+            padding: 36px 48px 44px;
+            text-align: left;
         }
 
         section.active {
@@ -114,29 +135,32 @@
         }
 
         h2 {
-            color: #0056b3;
-            border-bottom: 2px solid currentColor;
-            display: inline-block;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1rem;
+            position: relative;
+            margin: 0 0 20px;
+            padding-bottom: 14px;
+            color: #0b1d51;
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 44px;
+            height: 4px;
+            border-radius: 2px;
+            background: #0056b3;
+        }
+
+        ul + h2 {
+            margin-top: 40px;
         }
 
         p {
-            line-height: 1.6;
-        }
-
-        .photo {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .photo img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #000099;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 0 0 12px;
         }
 
         ul {
@@ -153,164 +177,392 @@
         a {
             color: #0056b3;
             text-decoration: none;
-            font-weight: bold;
         }
 
         a:hover {
             text-decoration: underline;
         }
 
+        .person,
+        .talk-link {
+            color: #000099;
+        }
+
+        .mail,
+        .seminar-mail {
+            color: #0056b3;
+            font-weight: 600;
+        }
+
+        .about-photo {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 30px auto 0;
+            border-radius: 12px;
+        }
+
+        .paper h3 {
+            margin: 0 0 6px;
+            color: #1a2233;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .paper .coauthors {
+            margin: 0 0 4px;
+            color: #5b6477;
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .paper .coauthors .person {
+            font-weight: 600;
+        }
+
+        .paper .status {
+            margin: 0 0 14px;
+            color: #5b6477;
+            font-size: 15px;
+        }
+
+        .paper .links {
+            margin: 0;
+        }
+
+        .pill {
+            display: inline-block;
+            margin: 0 10px 6px 0;
+            padding: 4px 12px;
+            border-radius: 14px;
+            background: #eef3fc;
+            color: #0056b3;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+        }
+
+        .pill:hover {
+            background: #dde8fa;
+            text-decoration: none;
+        }
+
+        .paper + .paper {
+            margin-top: 24px;
+            padding-top: 22px;
+            border-top: 1px solid #e8ebf2;
+        }
+
         footer {
             text-align: center;
-            background: #0056b3;
-            color: white;
-            padding: 0.1rem 0;
-            margin-top: 0.2rem;
+            color: #7a8296;
+            font-size: 14px;
+            padding: 28px 0 32px;
+        }
+
+        footer p {
+            margin: 0;
         }
 
         /* Mobile View */
         @media screen and (max-width: 768px) {
+            .content {
+                width: auto;
+                margin: 12px 12px 0;
+                font-size: 15px;
+            }
+
+            section {
+                padding: 22px 20px 26px;
+                border-radius: 14px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-bottom: 16px;
+                padding-bottom: 12px;
+            }
+
+            .paper h3 {
+                font-size: 17px;
+            }
+
+            .about-photo {
+                margin-top: 22px;
+                border-radius: 10px;
+            }
+
+            /* Phone bar (also the layout when JavaScript is off) */
             header {
-                padding: 0.2rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 20;
+            }
+
+            .header-inner {
+                width: auto;
+                height: auto;
+                min-height: 64px;
+                padding: 10px 16px;
+                gap: 12px;
+            }
+
+            .logo {
+                width: 44px;
+                height: 44px;
+            }
+
+            .header-text {
+                align-self: center;
+                flex: 1;
+                min-width: 0;
             }
 
             header h1 {
-                font-size: 1rem;
-            }
-
-            header p {
                 margin: 0;
-                font-size: 0.7rem;
+                font-size: 18px;
+                line-height: 1.25;
             }
 
-            body {
+            header nav ul {
+                flex-wrap: wrap;
+                gap: 0 16px;
+            }
+
+            header nav a {
+                padding: 6px 0;
                 font-size: 14px;
             }
 
-            /* Adjust Outer Container */
-            .outer-container {
-                width: 100%;
-                margin: 0 auto;
-                padding: 0 0;
-                border-radius: 1px;
+            header nav a.active::after {
+                display: none;
             }
 
-            .photo {
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            /* Phone bar with the hamburger menu (JavaScript on) */
+            .js .header-inner {
+                height: 64px;
+                min-height: 0;
+                padding: 0 8px 0 16px;
             }
 
-            .photo img {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                border: 4px solid #0056b3;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            /* Adjust Inner Container */
-            .inner-container {
-                width: 100%;
-                margin: 0 auto;
-                padding: 0.3rem 0;
-                border-radius: 1px;
-            }
-
-            /* Adjust Navigation Bar */
-            .navbar {
-                width: 100%;
-                white-space: normal;
-
-            }
-
-            .navbar nav ul {
+            .js .current-section {
+                display: block;
                 margin: 0;
-                padding: 0;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0 8px;
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 13px;
+                line-height: 1.3;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
-            .navbar nav ul li a {
-                padding: 0.5rem 0.5rem;
+            .js .menu-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+                padding: 0;
+                border: 0;
+                border-radius: 8px;
+                background: none;
+                color: white;
+                cursor: pointer;
+            }
+
+            .menu-button:focus-visible {
+                outline: 2px solid white;
+                outline-offset: -2px;
+            }
+
+            .menu-lines,
+            .menu-lines::before,
+            .menu-lines::after {
+                display: block;
+                width: 24px;
+                height: 2px;
+                border-radius: 1px;
+                background: currentColor;
+                transition: transform 0.2s, background-color 0.2s;
+            }
+
+            .menu-lines {
+                position: relative;
+            }
+
+            .menu-lines::before,
+            .menu-lines::after {
+                content: "";
+                position: absolute;
+                left: 0;
+            }
+
+            .menu-lines::before {
+                top: -7px;
+            }
+
+            .menu-lines::after {
+                top: 7px;
+            }
+
+            .menu-open .menu-lines {
+                background: transparent;
+            }
+
+            .menu-open .menu-lines::before {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .menu-open .menu-lines::after {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .js header nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 64px);
+                overflow-y: auto;
+                background: linear-gradient(to bottom, #000099, #0056b3);
+                box-shadow: 0 10px 24px rgba(11, 29, 81, 0.25);
+            }
+
+            .menu-open header nav {
+                display: block;
+            }
+
+            .js header nav ul {
+                display: block;
+            }
+
+            .js header nav li + li {
+                border-top: 1px solid rgba(255, 255, 255, 0.25);
+            }
+
+            .js header nav a {
+                padding: 0 20px 0 16px;
+                border-left: 4px solid transparent;
+                color: white;
+                font-size: 17px;
+                line-height: 54px;
+            }
+
+            .js header nav a.active {
+                background: rgba(0, 0, 92, 0.6);
+                border-left-color: white;
+            }
+
+            .js header nav a:focus-visible {
+                outline-offset: -4px;
+            }
+
+            .menu-open .menu-backdrop {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 10;
+                background: rgba(11, 29, 81, 0.43);
             }
 
             .seminar-mail {
                 white-space: normal;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .menu-lines,
+            .menu-lines::before,
+            .menu-lines::after {
+                transition: none;
+            }
+        }
+
+        /* Section links jump to markers at the top of the page */
+        .section-anchor {
+            position: absolute;
+            top: 0;
+        }
+
+        /* Without JavaScript: show the section named in the address */
+        html:not(.js) #papers:target ~ main section[data-section="about"],
+        html:not(.js) #meetings:target ~ main section[data-section="about"] {
+            display: none;
+        }
+
+        html:not(.js) #papers:target ~ main section[data-section="papers"],
+        html:not(.js) #meetings:target ~ main section[data-section="meetings"] {
+            display: block;
+        }
     </style>
 </head>
 <body>
+<span id="about" class="section-anchor"></span>
+<span id="papers" class="section-anchor"></span>
+<span id="meetings" class="section-anchor"></span>
 <header>
-    <h1>Inbar Oren</h1>
-    <p>Welcome to my personal website</p>
-</header>
-<div class="outer-container">
-    <!-- Photo Section -->
-    <div class="photo">
-        <img src="faceSupercompact.jpg" alt="Photo of Inbar Oren">
-    </div>
-
-    <div class="inner-container">
-        <!-- Navigation Bar -->
-        <div class="navbar">
-            <nav>
+    <div class="header-inner">
+        <img class="logo" src="logo-white.png" alt="" width="116" height="116">
+        <div class="header-text">
+            <h1>Inbar Oren</h1>
+            <p class="current-section" aria-hidden="true">About Me</p>
+            <nav id="site-nav">
                 <ul>
                     <li><a href="#about">About Me</a></li>
                     <li><a href="#papers">Publications and Preprints</a></li>
-                    <!--li><a href="#notes">Reasearch Notes</a></li-->
+                    <!--li><a href="#notes">Research Notes</a></li-->
                     <li><a href="#meetings">Meetings</a></li>
                 </ul>
             </nav>
         </div>
-
-        <!-- Main Content -->
-        <div class="content">
+        <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+            <span class="menu-lines"></span>
+        </button>
+    </div>
+</header>
+<div class="menu-backdrop"></div>
+<!-- Main Content -->
+<main class="content">
             <!-- About Me Section -->
             <section data-section="about" class="active">
                 <h2>About Me</h2>
-                <div style="text-align: left; line-height:2;">
-                    I am a PhD student in the Institute of mathematics in the Hebrew University,
-                    <br>studying set theory, under the supervision of Prof. <a
-                        href="https://math.huji.ac.il/~yairhayut/" style="color: #000099" target="_blank">Yair Hayut</a>.
+                <p>I am a PhD student in the Institute of Mathematics in the Hebrew University,
+                    studying set theory, under the supervision of Prof. <a class="person"
+                        href="https://math.huji.ac.il/~yairhayut/" target="_blank">Yair Hayut</a>.
                     I am mainly interested in large cardinal forcings and in particular combinatorial results that occur by changing cofinalities of
-                    successors of singular cardinals.
-                    <br>I received my MSc from Ben-Gurion University under the supervision of Prof. Menachem Kojman.
-                    <br>You can reach me at <a href="mailto:inbar.oren2@mail.huji.ac.il" style="color: #006300">inbar.oren2 'at' mail.huji.ac.il.</a>
-                    <br>
-
-                    <img src="cape_raul.jpeg" alt="Tasmania, Australia" width="480" height="240"
-                         style="display: block; margin: auto; max-width: 100%; height: auto;">
-                </div>
-
+                    successors of singular cardinals.</p>
+                <p>I received my MSc from Ben-Gurion University under the supervision of Prof. <a class="person" href="https://math.bgu.ac.il/en/people/users/kojman" target="_blank">Menachem Kojman</a>.</p>
+                <p>You can reach me at <a class="mail" href="mailto:inbar.oren2@mail.huji.ac.il">inbar.oren2 'at' mail.huji.ac.il</a>.</p>
+                <img class="about-photo" src="cape_raul.jpeg" alt="Tasmania, Australia" width="480" height="240">
             </section>
 
             <!-- Publications Section -->
             <section data-section="papers">
-                <h2>Publications and Preprints: </h2>
-                <ul style="list-style-type: disc; margin-left: 10px;">
-                    <li>
-                        <strong>A model for global compactness</strong> with <em>
-                        <a href="https://scholar.google.com/citations?user=HRZ9TQcAAAAJ&hl=en" target="_blank"
-                           style="color: #000099"> Sittinon Jirattikansakul </a>
-                        and
-                        <a href="https://www.assafrinot.com" target="_blank" style="color: #000099"> Assaf
-                            Rinot </a>.<br>
-                    </em>
-                        Accepted December 2025
-                        <a href="https://www.assafrinot.com/paper/67" target="_blank" style="color: #006300">View
-                            here</a>.
-                        <a href="https://arxiv.org/abs/2412.13584" target="_blank"> arxiv link <!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--> </a>
-                    </li>
-					<li>
-                        <strong>Stationary reflection using ancestrally forced conditions</strong>.<br>
-                        Preprint July 2026.
-                        <a href="https://arxiv.org/abs/2607.28350" target="_blank"> arxiv link <!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--> </a>
-                    </li>
-                    <!-- Add more publications as needed -->
-                </ul>
+                <h2>Publications and Preprints</h2>
+                <div class="paper">
+                    <h3>A model for global compactness</h3>
+                    <p class="coauthors">with <a class="person" href="https://scholar.google.com/citations?user=HRZ9TQcAAAAJ&amp;hl=en" target="_blank">Sittinon Jirattikansakul</a>
+                        and <a class="person" href="https://www.assafrinot.com" target="_blank">Assaf Rinot</a></p>
+                    <p class="status">Accepted to <em>Israel Journal of Mathematics</em>, December 2025</p>
+                    <p class="links">
+                        <a class="pill" href="https://www.assafrinot.com/paper/67" target="_blank">Author's copy</a>
+                        <a class="pill" href="https://arxiv.org/abs/2412.13584" target="_blank">arXiv<!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--></a>
+                    </p>
+                </div>
+                <div class="paper">
+                    <h3>Stationary reflection using ancestrally forced conditions</h3>
+                    <p class="status">Preprint, July 2026</p>
+                    <p class="links">
+                        <a class="pill" href="https://arxiv.org/abs/2607.28350" target="_blank">arXiv<!--img src="arxiv logo.png" alt="Arxiv" style="width: 20px; vertical-align: middle;"--></a>
+                    </p>
+                </div>
+                <!-- Add more publications as needed -->
             </section>
 
             <!-- Notes Section -->
@@ -327,27 +579,27 @@
 
             <!-- Talks Section -->
             <section data-section="meetings">
-                <h2 style="color: #000099"> Invited Talks: </h2>
+                <h2>Invited Talks</h2>
                 <ul>
                     <li>
                         July 2024, Leeds UK: <strong>120 Years of choice</strong>
-                        <br> <a href="Leeds2024P1.pdf" download style="color: #000099"> Presentation on a model for global
+                        <br> <a href="Leeds2024P1.pdf" target="_blank" class="talk-link"> Presentation on a model for global
                             compactness</a>
                     </li>
 					<li>
                         February 2025, Online: <strong>Set Theory of the United Kingdom 15</strong>
-						<br> <a href="STUK15.pdf" download style="color: #000099"> The range of indecomposability of ultrafilters at successors of singular cardinals </a>
+						<br> <a href="STUK15.pdf" target="_blank" class="talk-link"> The range of indecomposability of ultrafilters at successors of singular cardinals </a>
                     </li>
-                    <!-- Add more presantaions as needed -->
+                    <!-- Add more presentations as needed -->
                 </ul>
 
-                <h2 style="color: #006300">Organising: </h2>
+                <h2>Organising</h2>
                 <ul>
-                    <li style="text-align: left; line-height:2;">
+                    <li>
                         <strong>October 2024 - Present: HUJI set theory research seminar.</strong>
                         <br>If you would like to be added to the mailing list, please send me an email to:
                         <a href="mailto:inbar.oren2+setTheorySeminarHuji@mail.huji.ac.il?subject=HUJI%20Set%20Theory%20Seminar%20Mailing%20List&amp;body=Hi%2C%20please%20add%20me%20to%20the%20seminar%20mailing%20list"
-                           class="seminar-mail" style="color: #006300">inbar.oren2 'at' mail.huji.ac.il</a>.
+                           class="seminar-mail">inbar.oren2 'at' mail.huji.ac.il</a>.
                     </li>
                     <!-- Add more seminars as needed -->
                 </ul>
@@ -356,15 +608,13 @@
                 <ul>
                     <li>
                         July 2024, Leeds UK: <strong>120 Years of choice</strong>
-                        <a href="Leeds2024P1.pdf" download> Presentaion on a Model for global compactness</a>
+                        <a href="Leeds2024P1.pdf" download> Presentation on a Model for global compactness</a>
                     </li>
 
                 </ul>
                 <-->
             </section>
-        </div>
-    </div>
-</div>
+</main>
 
 
 <script>
@@ -388,10 +638,15 @@
             return;
         }
 
-        // Highlight only the nav link for the visible section
-        const navLinks = document.querySelectorAll('.navbar nav ul li a');
+        // Highlight only the nav link for the visible section, and show its name in the phone bar
+        const navLinks = document.querySelectorAll('header nav a');
+        const currentSection = document.querySelector('.current-section');
         navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${name}`);
+            const isActive = link.getAttribute('href') === `#${name}`;
+            link.classList.toggle('active', isActive);
+            if (isActive) {
+                currentSection.textContent = link.textContent;
+            }
         });
     }
 
@@ -400,8 +655,31 @@
     window.addEventListener('hashchange', () => {
         showSection(location.hash.slice(1));
     });
-</script>
 
+    // Phone menu: open and close the drop-down
+    const menuButton = document.querySelector('.menu-button');
+    const menuBackdrop = document.querySelector('.menu-backdrop');
+
+    function setMenu(open) {
+        document.documentElement.classList.toggle('menu-open', open);
+        menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    menuButton.addEventListener('click', () => {
+        setMenu(!document.documentElement.classList.contains('menu-open'));
+    });
+    menuBackdrop.addEventListener('click', () => setMenu(false));
+    document.querySelectorAll('header nav a').forEach(link => {
+        link.addEventListener('click', () => setMenu(false));
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && document.documentElement.classList.contains('menu-open')) {
+            setMenu(false);
+            menuButton.focus();
+        }
+    });
+    window.matchMedia('(max-width: 768px)').addEventListener('change', () => setMenu(false));
+</script>
 <footer>
     <p>&copy; 2026 Inbar Oren</p>
 </footer>
